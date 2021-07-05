@@ -1,0 +1,14 @@
+# mac
+.DS_Store
+
+# Compiled files
+*.tfstate
+*.tfvars
+
+# Module directory
+.terraform/
+
+# py
+__pycache__
+.pyc
+./__pycache__
