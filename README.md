@@ -31,10 +31,16 @@ Your project structure should now look like this:
     ├── hello_world.py
     └── requirements.txt
 └── terraform 
-    ├── policies
-    ├── task-definitions
+    ├── policies/
+    	├── ecs-instance-role-policy.json
+	├── ecs-service-role-policy.json
+	└── ecs-role.json
+    ├── task-definitions/
+        └── flask_app.json.tpl
     ├── provider.tf
     ├── logs.tf
+    ├── autoscaling.tf
+    ├── iam.tf
     ├── networking.tf
     ├── ecs.tf
     ├── security.tf
