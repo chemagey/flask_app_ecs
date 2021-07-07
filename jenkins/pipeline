@@ -1,0 +1,33 @@
+pipeline {   
+  agent {
+    node {
+      label 'master'
+    }  
+  }
+  stages {
+    stage('checkout') {
+      steps {
+        checkout scm
+        sh 'git clone https://github.com/chemagey/savana-test.git'
+        sh 'cd savana-test/app'
+      }
+    }
+   stage('Build Docker') {
+        sh 'sudo aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 619801971185.dkr.ecr.eu-west-1.amazonaws.com'
+        sh 'sudo docker build -t ecs-flask-app .'
+        sh 'sudo docker tag ecs-flask-app:latest 619801971185.dkr.ecr.eu-west-1.amazonaws.com/ecs-flask-app:latest'
+   }
+   stage('Push the image in ECR') {
+        sh 'sudo docker push 619801971185.dkr.ecr.eu-west-1.amazonaws.com/ecs-flask-app:latest'
+   }
+   stage('Terraform init') {
+        sh 'terraform init'
+   }
+   stage('Terraform plan') {
+        sh 'terraform plan'
+   }
+   stage('Terraform apply') {
+        sh 'terraform apply --auto-approve'
+   }
+   
+   }
