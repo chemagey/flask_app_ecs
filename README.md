@@ -1,5 +1,5 @@
 # Savana Challenger
-Repository where the challenge code proposed by Savana Medical is housed
+Repository where the challenge code proposed by Savana is housed
 
 # Goal
 There are dockerize and deploy a simple flask app into the code in hello_world.py to Amazon Web Services with their Elastic Container Service and a secure isolated environment with only HTTPS exposed to the world, using terraform as the infrastructure code and Jenkins as de CI/CD
