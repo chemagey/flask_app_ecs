@@ -24,5 +24,4 @@ variable "certificate_arn" {
   description = "The ARN of the default SSL certificate for HTTPS listener"
   type        = string
   default     = "arn:aws:acm:us-east-1:619801971185:certificate/c9585748-3a0c-456a-9061-9969c7d3cdf5"
-  sensitive   = true
 }
