@@ -8,7 +8,7 @@ resource "aws_alb" "alb-flask_app" {
 
 resource "aws_alb_target_group" "default-target-group" {
   name     = "ecs-flask-tg"
-  port     = 80
+  port     = 8080
   protocol = "HTTP"
   vpc_id   = aws_vpc.vpc-flask_app.id
 
