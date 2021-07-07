@@ -105,14 +105,19 @@ docker push 619801971185.dkr.ecr.eu-west-1.amazonaws.com/ecs-flask-app:latest
 
 ```
 # Step 4. Create AWS infrastructure ECS with terraform
-Navigate to the terraform directory and run the commands
+Navigate to the terraform directory
 
+```
+cd savana-challenger/terraform
+
+```
+Run the commands and with that we can start defining each piece of the AWS infrastructure
 ```
 terraform init
 terraform plan
-terraform apply
+terraform apply --auto-approve
+
 ```
-With that we can start defining each piece of the AWS infrastructure.
 
 # Bonus Challenge. Jenkins Pipeline
 I have added the code to automate the whole deployment with jenkins
