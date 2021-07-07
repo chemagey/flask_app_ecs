@@ -108,6 +108,6 @@ terraform apply
 ```
 With that we can start defining each piece of the AWS infrastructure.
 
-# Bonus Challenge. Add Jenkins Pipeline
+# Bonus Challenge. Jenkins Pipeline
 I have added the code to automate the whole deployment with jenkins
 
