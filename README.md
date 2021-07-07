@@ -45,14 +45,14 @@ Your project structure should now look like this:
 ```
 
 # Step 2. Built the image Docker with the "hello_world.py"
-Navege in the directory in the repo
+Navigate to the directory the flask app directory 
 
 ```
 cd savana-challenger/app/
 
 ```
 
-The Dockerfile in your local directory have the following code
+This is the Dockerfile with which we are going to build the image flask-app
 ```
 FROM python:3.7-alpine
 
@@ -68,5 +68,46 @@ EXPOSE 8080
 
 CMD flask run --host=0.0.0.0 --port=8080
 ```
+Now built the image
 
+```
+docker build -t ecs-flask-app .
+
+```
+
+# Step 3. Create the repository in AWS ECR and push the image Docker
+Firt create the credential with own count in AWS
+```
+aws configure
+AWS Access Key ID [****************]:
+AWS Secret Key ID [****************]:
+
+```
+Now the create the repository in ECR
+```
+aws ecr create-repository --repository-name ecs-flask-app
+
+```
+Authenticate the Docker CLI to use the ECR registry:
+```
+aws ecr get-login --region us-west-1 --no-include-email
+
+```
+Next the push image 
+```
+docker push 619801971185.dkr.ecr.eu-west-1.amazonaws.com/ecs-flask-app:latest
+
+```
+# Step 4. Create AWS infrastructure ECS with terraform
+Navigate to the terraform directory and run the commands
+
+```
+terraform init
+terraform plan
+terraform apply
+```
+With that we can start defining each piece of the AWS infrastructure.
+
+# Bonus Challenge. Add Jenkins Pipeline
+I have added the code to automate the whole deployment with jenkins
 
